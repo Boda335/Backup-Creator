@@ -1,85 +1,120 @@
+
 # Discord Backup Bot
 
-This bot allows you to create, list, retrieve, and delete server backups in Discord. It uses Discord's `discord.py` library to interact with Discord's API and handle commands.
+## Overview
+
+The Discord Backup Bot is designed to help server administrators create, manage, and restore server backups. It allows users to generate server templates, store backup data, list public backups, and restore servers using backup codes. The bot uses Discord's interactions and views to provide a user-friendly experience for managing server backups.
 
 ## Features
 
-- **Create Backup**: Create a server template link and save it to a file with optional images.
-- **List Backups**: List all public server backups with their backup codes.
-- **Get Backup Information**: Retrieve detailed information about a backup using the backup code.
-- **Delete Backup**: Delete the backup for the current server.
-
-## Setup
-
-### Prerequisites
-
-- Python 3.8 or higher
-- `discord.py` library (version 2.4.0 or higher)
-
-### Installation
-
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/your-repository.git
-   cd your-repository
-   ```
-
-2. Install the required packages:
-   ```bash
-   pip install discord.py
-   ```
-
-### Configuration
-
-1. Replace the `bot.run('YOUR_BOT_TOKEN')` line with your Discord bot token in the script.
-
-2. Ensure your bot has the necessary permissions to manage servers and create templates.
+- **Create Backups**: Generate a server template and store its details, including privacy settings and optional images.
+- **List Backups**: View a list of all public backups with their details.
+- **Restore Backups**: Retrieve backup information using a backup code.
+- **Delete Backups**: Remove backups associated with the current server.
 
 ## Commands
 
 ### `/backup`
-Create a server template link and save it to a file.
+Create a server backup and store the template link and related information.
 
-- **privacy**: Set the privacy of the backup link (`public` or `private`).
-- **image1**: Optional URL of the first image.
-- **image2**: Optional URL of the second image.
-- **image3**: Optional URL of the third image.
+**Parameters:**
+- `privacy` (string): Privacy setting for the backup link ("public" or "private").
+- `image1` (string, optional): URL of the first image to include.
+- `image2` (string, optional): URL of the second image to include.
+- `image3` (string, optional): URL of the third image to include.
+
+**Example Usage:**
+```
+/backup privacy: public image1: https://example.com/image1.png image2: https://example.com/image2.png
+```
 
 ### `/list_backups`
 List all public server backups with their backup codes.
 
-### `/get_backup_info`
-Retrieve information about a backup using the backup code.
-
-- **code**: The backup code.
-
-### `/delete_backup`
-Delete the backup for the current server.
-
-## Code Explanation
-
-- `generate_random_code(length=8)`: Generates a random alphanumeric code.
-- `on_ready()`: Prints a message when the bot is ready and attempts to sync commands.
-- `backup(interaction, privacy, image1, image2, image3)`: Creates a backup of the server and saves it to a file.
-- `BackupView`: A custom view for pagination of backup listings.
-- `list_backups(interaction)`: Lists all public backups with pagination.
-- `get_backup_info(interaction, code)`: Sends backup information to the user's private messages.
-- `delete_backup(interaction)`: Deletes the backup for the current server.
-
-## Running the Bot
-
-Run the bot using the following command:
-```bash
-python bot.py
+**Usage:**
+```
+/list_backups
 ```
 
-Replace `bot.py` with the filename of your script if different.
+**Note:** Displays the backups in pages with "Previous" and "Next" buttons.
+
+### `/restore`
+Retrieve backup information using a backup code.
+
+**Parameters:**
+- `code` (string): Backup code for the server.
+
+**Example Usage:**
+```
+/restore code: ABC123
+```
+
+### `/delete_backup`
+Delete the backup associated with the current server.
+
+**Usage:**
+```
+/delete_backup
+```
+
+## Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/your-repo/discord-backup-bot.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd discord-backup-bot
+   ```
+
+3. Install the required packages:
+   ```
+   pip install discord.py
+   ```
+
+4. Update the bot token in the script (`bot.run('YOUR_BOT_TOKEN')`).
+
+5. Run the bot:
+   ```
+   python bot.py
+   ```
+
+## Configuration
+
+- **Bot Token**: Replace `'YOUR_BOT_TOKEN'` with your actual Discord bot token in the script.
+- **Backup File**: The bot stores backup data in `server_backups.json`.
+
+## Example
+
+Here’s a brief example of how to use the bot:
+
+1. **Creating a Backup**:
+   ```
+   /backup privacy: public image1: https://example.com/image1.png
+   ```
+
+2. **Listing Backups**:
+   ```
+   /list_backups
+   ```
+
+3. **Restoring a Backup**:
+   ```
+   /restore code: ABC123
+   ```
+
+4. **Deleting a Backup**:
+   ```
+   /delete_backup
+   ```
 
 ## Notes
 
-- Ensure your bot token is kept secret and not exposed in public repositories.
-- Adjust permissions and intents as necessary for your bot's needs.
+- Ensure that the bot has the necessary permissions to manage the server and create templates.
+- Backup information is stored in a JSON file and can be edited or cleared manually if needed.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
