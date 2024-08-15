@@ -25,7 +25,7 @@ Create a server backup and store the template link and related information.
 
 **Example Usage:**
 
-/backup privacy: <public> image1:<IMG_URL1> image2:<IMG_URL2> image3:<IMG_URL3>
+```/backup privacy: <public> image1:<IMG_URL1> image2:<IMG_URL2> image3:<IMG_URL3>```
 
 
 ### `/list_backups`
