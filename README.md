@@ -24,9 +24,9 @@ Create a server backup and store the template link and related information.
 - `image3` (string, optional): URL of the third image to include.
 
 **Example Usage:**
-```
-/backup privacy: public image1: https://example.com/image1.png image2: https://example.com/image2.png
-```
+
+/backup privacy: <public> image1:<IMG_URL1> image2:<IMG_URL2> image3:<IMG_URL3>
+
 
 ### `/list_backups`
 List all public server backups with their backup codes.
