@@ -1,4 +1,4 @@
-![Bot Image](cover)
+![Bot Image](cover.jpg)
 
 # Discord Backup Bot
 
