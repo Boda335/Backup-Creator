@@ -1,5 +1,3 @@
-![Bot Image](cover.jpg)
-
 # Discord Backup Bot
 
 ## Overview
